@@ -1,0 +1,11 @@
+{
+  "name": "threadconnect",
+  "version": "1.0.0",
+  "description": "An application for users to discuss, share, and vote on different topics",
+  "main": "src/server.js",
+  "scripts": {
+    "test": "export NOE_ENV=test&& jasmine"
+  },
+  "author": "Justin Elliott",
+  "license": "ISC"
+}
