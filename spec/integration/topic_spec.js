@@ -57,6 +57,13 @@ describe("routes: topics", () => {
                 description: "Create topics test description"
             }
         };
+        const invalidOptions = {
+            url: `${base}create`,
+            form: {
+                title: "xxxx",
+                description: "zzzz"
+            }
+        };
 
         it("should create a new topic and redirect", (done) => {
             request.post(options,
@@ -70,6 +77,25 @@ describe("routes: topics", () => {
                             expect(res.statusCode).toBe(303);
                             expect(topic.title).toBe("Create Topics Test Title");
                             expect(topic.description).toBe("Create topics test description");
+                            done();
+                        })
+                        .catch((err) => {
+                            console.log(err);
+                            done();
+                        });
+                }
+            );
+        });
+        it("should not create a new topic and redirect", (done) => {
+            request.post(invalidOptions,
+                (err, res, body) => {
+                    Topic.findOne({
+                            where: {
+                                title: "xxxx"
+                            }
+                        })
+                        .then((topic) => {
+                            expect(topic).toBeNull();
                             done();
                         })
                         .catch((err) => {
