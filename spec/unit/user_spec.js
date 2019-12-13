@@ -4,7 +4,6 @@ const User = require("../../src/db/models").User;
 describe("User", () => {
 
     beforeEach((done) => {
-        // #1
         sequelize.sync({
                 force: true
             })
@@ -20,7 +19,6 @@ describe("User", () => {
 
     describe("#create()", () => {
 
-        // #2
         it("should create a User object with a valid email and password", (done) => {
             User.create({
                     email: "user@example.com",
@@ -37,7 +35,6 @@ describe("User", () => {
                 });
         });
 
-        // #3
         it("should not create a user with invalid email or password", (done) => {
             User.create({
                     email: "invalid-user-name",
@@ -50,7 +47,6 @@ describe("User", () => {
                     done();
                 })
                 .catch((err) => {
-                    // #4
                     expect(err.message).toContain("Validation error: must be a valid email");
                     done();
                 });
@@ -58,7 +54,6 @@ describe("User", () => {
 
         it("should not create a user with an email already taken", (done) => {
 
-            // #5
             User.create({
                     email: "user@example.com",
                     password: "123456789"
