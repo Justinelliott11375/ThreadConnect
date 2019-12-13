@@ -51,7 +51,7 @@ describe("routes : users", () => {
             const options = {
                 url: base,
                 form: {
-                    email: "user@example.com",
+                    email: "user1@example.com",
                     password: "123456789"
                 }
             }
@@ -61,12 +61,12 @@ describe("routes : users", () => {
 
                     User.findOne({
                             where: {
-                                email: "user@example.com"
+                                email: "user1@example.com"
                             }
                         })
                         .then((user) => {
                             expect(user).not.toBeNull();
-                            expect(user.email).toBe("user@example.com");
+                            expect(user.email).toBe("user1@example.com");
                             expect(user.id).toBe(1);
                             done();
                         })
