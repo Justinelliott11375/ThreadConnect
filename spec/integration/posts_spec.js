@@ -5,37 +5,45 @@ const base = "http://localhost:3000/topics";
 const sequelize = require("../../src/db/models/index").sequelize;
 const Topic = require("../../src/db/models").Topic;
 const Post = require("../../src/db/models").Post;
+const User = require("../../src/db/models").User;
 
 describe("routes : posts", () => {
 
     beforeEach((done) => {
         this.topic;
         this.post;
+        this.user;
 
         sequelize.sync({
             force: true
         }).then((res) => {
-            Topic.create({
-                    title: "Topic Title For Post Route Test",
-                    description: "Topic description for post route test"
+            User.create({
+                    email: "valid@email.com",
+                    password: "validPassword"
                 })
-                .then((topic) => {
-                    this.topic = topic;
+                .then((user) => {
+                    this.user = user;
 
-                    Post.create({
-                            title: "Post title for post route test",
-                            body: "Post description for post route test",
-                            topicId: this.topic.id
+                    Topic.create({
+                            title: "Topic Title For Post Route Test",
+                            description: "Topic description for post route test",
+                            posts: [{
+                                title: "Post title for post route test",
+                                body: "Post description for post route test",
+                                userId: this.user.id
+                            }]
+                        }, {
+                            include: {
+                                model: Post,
+                                as: "posts"
+                            }
                         })
-                        .then((post) => {
-                            this.post = post;
+                        .then((topic) => {
+                            this.topic = topic;
+                            this.post = topic.posts[0];
                             done();
                         })
-                        .catch((err) => {
-                            console.log(err);
-                            done();
-                        });
-                });
+                })
         });
 
     });
