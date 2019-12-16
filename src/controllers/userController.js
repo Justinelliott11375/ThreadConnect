@@ -26,15 +26,19 @@ module.exports = {
     },
 
     signInForm(req, res, next) {
+        console.log("sign in form called");
         res.render("users/sign_in");
     },
 
     signIn(req, res, next) {
+        console.log("signIn fired");
         passport.authenticate("local")(req, res, function () {
             if (!req.user) {
-                req.flash("notice", "Sign in failed. Please try again")
-                req.redirect("/users/sign_in");
+                console.log("passed authenticate, if");
+                req.flash("notice", "Sign in failed. Please try again.")
+                res.redirect("/users/sign_in");
             } else {
+                console.log("passed authenticate, else");
                 req.flash("notice", "You've successfully signed in!");
                 res.redirect("/");
             }

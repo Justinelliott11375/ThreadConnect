@@ -4,7 +4,7 @@
   "description": "An application for users to discuss, share, and vote on different topics",
   "main": "src/server.js",
   "scripts": {
-    "test": "export NOE_ENV=test&& jasmine",
+    "test": "export NODE_ENV=test&& jasmine",
     "start": "node src/server.js"
   },
   "author": "Justin Elliott",

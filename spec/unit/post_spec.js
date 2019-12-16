@@ -44,26 +44,25 @@ describe("Post", () => {
     });
 
     describe("#create()", () => {
-
-        it("should create a post object with a title, body, assigned topic, and user", (done) => {
+        it("should create a post object with a title, body, and assigned topic and user", (done) => {
             Post.create({
-                    title: "Post Title For Post Create Test",
-                    body: "Post description for post create test.",
+                    title: "Sample post title for post create",
+                    body: "Sample post description for post create.",
                     topicId: this.topic.id,
                     userId: this.user.id
                 })
                 .then((post) => {
-                    expect(post.title).toBe("Post Title For Post Create Test");
-                    expect(post.body).toBe("Post description for post create test.");
-                    expect(post.topidId).toBe(this.topic.id);
+                    expect(post.title).toBe("Sample post title for post create");
+                    expect(post.body).toBe("Sample post description for post create.");
+                    expect(post.topicId).toBe(this.topic.id);
                     expect(post.userId).toBe(this.user.id);
                     done();
                 })
                 .catch((err) => {
                     console.log(err);
                     done();
-                });
-        });
+                })
+        })
 
         it("should not create a post with missing title, body, or assigned topic", (done) => {
             Post.create({
@@ -111,7 +110,7 @@ describe("Post", () => {
 
             this.post.getTopic()
                 .then((associatedTopic) => {
-                    expect(associatedTopic.title).toBe("Topic Title For Post Test");
+                    expect(associatedTopic.title).toBe("Sample Topic Title");
                     done();
                 });
 

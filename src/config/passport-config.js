@@ -9,6 +9,7 @@ module.exports = {
         app.use(passport.initialize());
         app.use(passport.session());
 
+
         passport.use(new LocalStrategy({
             usernameField: "email"
         }, (email, password, done) => {
@@ -21,13 +22,13 @@ module.exports = {
 
                     if (!user || !authHelper.comparePass(password, user.password)) {
                         return done(null, false, {
-                            message: "Invalid email or password"
+                            message: "invalid email or password"
                         });
                     }
+
                     return done(null, user);
                 })
         }));
-
         passport.serializeUser((user, callback) => {
             callback(null, user.id);
         });
@@ -39,8 +40,7 @@ module.exports = {
                 })
                 .catch((err => {
                     callback(err, user);
-                }))
-
+                }));
         });
     }
 }

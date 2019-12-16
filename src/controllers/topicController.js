@@ -59,7 +59,7 @@ module.exports = {
         })
     },
     destroy(req, res, next) {
-        topicQueries.deleteTopic(req.params.id, (err, topic) => {
+        topicQueries.deleteTopic(req, (err, topic) => {
             if (err) {
                 res.redirect(err, `/topics/${req.params.id}`)
             } else {
@@ -70,6 +70,8 @@ module.exports = {
     edit(req, res, next) {
         topicQueries.getTopic(req.params.id, (err, topic) => {
             if (err || topic == null) {
+                console.log("edit test error");
+                console.log(err);
                 res.redirect(404, "/");
             } else {
 
