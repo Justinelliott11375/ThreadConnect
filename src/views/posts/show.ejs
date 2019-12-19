@@ -11,6 +11,7 @@
     <main class="container">
         <% include ../static/partials/messages.ejs %>
 
+        <a href="/topics/<%= post.topicId %>" class="btn btn-info">Back to Topic</a>
         <div style="display: flex; align-items:center;">
             <% if(currentUser) { %>
             <% include ../votes/voting.ejs %>
