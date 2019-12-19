@@ -5,8 +5,9 @@ module.exports = {
 
         if (req.user) {
             voteQueries.createVote(req, 1, (err, vote) => {
+                //console.log(vote);
                 if (err) {
-                    console.log(err);
+                    //console.log(err);
                     req.flash("error", err);
                 }
                 res.redirect(req.headers.referer);
