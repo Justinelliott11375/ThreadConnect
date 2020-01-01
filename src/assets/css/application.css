@@ -2,6 +2,40 @@ body {
     padding-top: 80px;
 }
 
+.navbar-custom {
+    background-color: #8d1b3d;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 8%;
+}
+
+.navbar-buttons {
+    border-radius: 4px;
+    text-decoration: none;
+    color: white;
+    -webkit-transition-duration: 0.4s;
+    /* Safari */
+    transition-duration: 0.4s;
+    margin: 10px;
+    padding: 10px;
+}
+
+.navbar-buttons:hover {
+    background-color: white;
+    text-decoration: none;
+    color: black;
+}
+
 #navbar-home {
     color: white;
+}
+
+#comment-icon {
+    color: #8d1b3d;
+}
+
+.list-group-item a,
+.list-group-item a:hover {
+    color: black;
 }

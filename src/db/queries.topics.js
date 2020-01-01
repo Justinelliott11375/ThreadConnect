@@ -4,7 +4,10 @@ const Authorizer = require("../policies/topic");
 
 module.exports = {
     getAllTopics(callback) {
-        return Topic.findAll()
+        return Topic.findAll({include: [{
+            model: Post,
+            as: "posts"
+        }]})
             .then((topics) => {
                 callback(null, topics);
             })

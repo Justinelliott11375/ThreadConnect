@@ -6,8 +6,9 @@
 </head>
 
 <body>
+    <% include ../static/partials/navbar.ejs %>
     <main class="container">
-        <% include ../static/partials/navbar.ejs %>
+
 
         <h1>Topics</h1>
 
@@ -19,6 +20,9 @@
             <% topics.forEach((topic) => { %>
             <li class="list-group-item">
                 <a href="/topics/<%= topic.id %>"> <%= topic.title %> </a>
+                <i id="comment-icon" class="fas fa-comments"> <%= topic.posts.length %> posts</i>
+
+
             </li>
             <% }) %>
         </ul>
