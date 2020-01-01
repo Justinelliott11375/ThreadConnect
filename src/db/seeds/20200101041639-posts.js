@@ -1,20 +1,31 @@
 'use strict';
 
-const faker = require("faker");
+const faker = require('faker');
 
-let topics = [];
+const posts = [];
 
-for (let i = 1; i <= 15; i++) {
-  topics.push({
-    title: faker.hacker.noun(),
-    description: faker.hacker.phrase(),
-    createdAt: new Date(),
-    updatedAt: new Date()
-  });
-
+function getRandomUserId(min, max){
+  return Math.random() * (max - min) + min;
 }
+
+for(let i = 1 ; i <= 15 ; i++){
+  for(let j = 1 ; j <= 10 ; j++){
+  
+    posts.push({
+      title: faker.hacker.phrase(),
+      body: faker.lorem.sentence(),
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      topicId: i,
+      userId: getRandomUserId(1, 15)
+    
+    });
+  }
+}
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
+    
     /*
       Add altering commands here.
       Return a promise to correctly handle asynchronicity.
@@ -25,7 +36,7 @@ module.exports = {
         isBetaMember: false
       }], {});
     */
-    return queryInterface.bulkInsert("Topics", topics, {});
+   return queryInterface.bulkInsert("Posts", posts, {});
   },
 
   down: (queryInterface, Sequelize) => {
@@ -36,6 +47,6 @@ module.exports = {
       Example:
       return queryInterface.bulkDelete('Person', null, {});
     */
-    return queryInterface.bulkDelete("Topics", null, {});
+   return queryInterface.bulkDelete("Posts", null, {});
   }
 };
