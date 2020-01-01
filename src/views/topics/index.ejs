@@ -20,9 +20,8 @@
             <% topics.forEach((topic) => { %>
             <li class="list-group-item">
                 <a href="/topics/<%= topic.id %>"> <%= topic.title %> </a>
-                <i id="comment-icon" class="fas fa-comments"> <%= topic.posts.length %> posts</i>
-
-
+                <i id="comment-icon" class="fas fa-comments"> </i><%= topic.posts.length %> posts
+                <p><%= topic.description %></p>
             </li>
             <% }) %>
         </ul>
