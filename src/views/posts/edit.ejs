@@ -14,7 +14,7 @@
 
         <% include ../static/partials/messages.ejs %>
 
-        <form action="/topics/<%= post.topicId %>/posts/<%= post.id %>/update" method="post">
+        <form action="/topics/<%= post.topicId %>/posts/<%= post.id %>/update" autocomplete="off" method="post">
             <div class="form-group">
                 <label for="title">Post title</label>
                 <input value="<%= post.title %>" type="text" class="form-control" name="title"
@@ -27,7 +27,7 @@
                     placeholder="Enter Description"><%= post.body %></textarea>
                 <small class="text-muted" id="bodyHelp">body must be 10 or more characters in length.</small>
             </div>
-            <button type="submit" class="btn btn-primary">Update</button>
+            <button type="submit" class="crud-buttons">Update</button>
         </form>
     </main>
 

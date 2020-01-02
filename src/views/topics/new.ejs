@@ -14,7 +14,7 @@
 
         <h1>New Topic</h1>
 
-        <form action="/topics/create" method="post">
+        <form action="/topics/create" autocomplete="off" method="post">
             <div class="form-group">
                 <label for="title">Topic title</label>
                 <input type="text" class="form-control" name="title" aria-describedby="titleHelp"
@@ -28,7 +28,7 @@
                     length.</small>
 
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="crud-buttons">Submit</button>
         </form>
 
     </main>

@@ -13,14 +13,22 @@
         <h1>Topics</h1>
 
         <% if(currentUser && currentUser.isAdmin()) { %>
-        <a href="/topics/new" class="btn btn-success">New Topic</a>
+        <a class="links" href="/topics/new">
+            <button type="submit" class="crud-buttons">New Topic</button>
+        </a>
         <% } %>
 
         <ul class="list-group">
             <% topics.forEach((topic) => { %>
             <li class="list-group-item">
-                <a href="/topics/<%= topic.id %>"> <%= topic.title %> </a>
-                <i id="comment-icon" class="fas fa-comments"> </i><%= topic.posts.length %> posts
+
+                <h2 class="topic-title">
+                    <a href="/topics/<%= topic.id %>"><%= topic.title %> </a>
+                </h2>
+                <span class="post-icon-and-number">
+                    <i id="comment-icon" class="fas fa-comments"> </i>
+                    <%= topic.posts.length %> posts
+                </span>
                 <p><%= topic.description %></p>
             </li>
             <% }) %>

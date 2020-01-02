@@ -34,8 +34,16 @@ body {
 
 #comment-icon {
     color: #8d1b3d;
+    margin-left: 5px;
     padding-right: 5px;
     padding-left: 10px;
+    text-align: right;
+}
+
+.post-icon-and-number {
+    position: absolute;
+    top: 5px;
+    right: 10px;
 }
 
 .list-group {
@@ -46,4 +54,66 @@ body {
 .list-group-item a:hover {
     color: black;
     font-family: Arial, Helvetica, sans-serif;
+}
+
+.topic-title {
+    font-weight: 700;
+    width: 90%;
+    display: inline-block;
+}
+
+h1 {
+    font-weight: 700;
+}
+
+.posted-by {
+    position: relative;
+    bottom: 10px;
+}
+
+.crud-buttons {
+    border-radius: 4px;
+    border: 2px solid #8d1b3d;
+    text-decoration: none;
+    color: black;
+    -webkit-transition-duration: 0.4s;
+    /* Safari */
+    transition-duration: 0.4s;
+    width: 100px;
+    margin: 2px;
+    padding: 6px, 0px, 6px, 0px;
+}
+
+.crud-buttons:hover {
+    background-color: #8d1b3d;
+    text-decoration: none;
+    color: white;
+}
+
+#back-topic-button {
+    border-radius: 4px;
+    border: 2px solid #8d1b3d;
+    text-decoration: none;
+    color: black;
+    -webkit-transition-duration: 0.4s;
+    /* Safari */
+    transition-duration: 0.4s;
+    width: 130px;
+    margin: 5px;
+    padding: 6px, 0px, 6px, 0px;
+}
+
+#back-topic-button:hover {
+    background-color: #8d1b3d;
+    text-decoration: none;
+    color: white;
+}
+
+#post-title-vote {
+    margin-left: -20px;
+}
+
+.links {
+    display: inline-block;
+    width: 100px;
 }

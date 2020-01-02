@@ -11,17 +11,22 @@
     <main class="container">
         <% include ../static/partials/messages.ejs %>
 
-        <a href="/topics/<%= post.topicId %>" class="btn btn-info">Back to Topic</a>
-        <div style="display: flex; align-items:center;">
+        <a href="/topics/<%= post.topicId %>">
+            <button type="submit" id="back-topic-button">Back to Topic</button>
+        </a>
+        <div id="post-title-vote" style="display: flex; align-items:center;">
             <% if(currentUser) { %>
             <% include ../votes/voting.ejs %>
             <% } %>
             <h1><%= post.title %></h1>
         </div>
         <% if(currentUser && (currentUser.id === post.userId || currentUser.isAdmin())) { %>
-        <a href="/topics/<%= post.topicId %>/posts/<%= post.id %>/edit" class="btn btn-warning">Edit</a>
-        <form style="display:initial" action="/topics/<%= post.topicId %>/posts/<%= post.id %>/destroy" method="post">
-            <button type="submit" class="btn btn-danger">Delete</button>
+        <a class="links" href="/topics/<%= post.topicId %>/posts/<%= post.id %>/edit">
+            <button type="submit" class="crud-buttons">Edit</button>
+        </a>
+        <form style="display:initial" action="/topics/<%= post.topicId %>/posts/<%= post.id %>/destroy"
+            autocomplete="off" method="post">
+            <button type="submit" class="crud-buttons">Delete</button>
         </form>
         <% } %>
         <p><%= post.body %></p>

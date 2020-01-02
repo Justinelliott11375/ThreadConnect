@@ -13,11 +13,15 @@
 
         <h1><%= topic.title %></h1>
         <% if(currentUser) { %>
-        <a href="/topics/<%=topic.id%>/posts/new" class="btn btn-success">New Post</a>
+        <a class="links" href="/topics/<%=topic.id%>/posts/new">
+            <button type="submit" class="crud-buttons">New Post</button>
+        </a>
         <% if(currentUser.isAdmin()) { %>
-        <a href="/topics/<%= topic.id %>/edit" class="btn btn-warning">Edit</a>
-        <form style="display:initial" action="/topics/<%= topic.id %>/destroy" method="post">
-            <button type="submit" class="btn btn-danger">Delete</button>
+        <a class="links" href="/topics/<%= topic.id %>/edit">
+            <button type="submit" class="crud-buttons">Edit</button>
+        </a>
+        <form style="display:initial" action="/topics/<%= topic.id %>/destroy" autocomplete="off" method="post">
+            <button type="submit" class="crud-buttons">Delete</button>
         </form>
         <% } %>
         <% } %>
@@ -29,8 +33,12 @@
         <ul class="list-group">
             <% topic.posts.forEach((post) => { %>
             <li class="list-group-item">
-                <a href="/topics/<%= topic.id %>/posts/<%= post.id %>"> <%= post.title %> </a>
-                <small>posted by: <%= post.User.email %></small>
+                <h4>
+                    <a href="/topics/<%= topic.id %>/posts/<%= post.id %>"> <%= post.title %> </a>
+                </h4>
+                <div>
+                    <small class="posted-by">posted by: <%= post.User.email %></small>
+                </div>
             </li>
             <% }) %>
         </ul>

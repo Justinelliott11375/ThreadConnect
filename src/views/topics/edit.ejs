@@ -13,7 +13,7 @@
         <% include ../static/partials/messages.ejs %>
 
         <h1>Edit Topic</h1>
-        <form action="/topics/<%= topic.id %>/update" method="post">
+        <form action="/topics/<%= topic.id %>/update" autocomplete="off" method="post">
             <div class="form-group">
                 <label for="title">Topic title</label>
                 <input value="<%= topic.title %>" type="text" class="form-control" name="title"
@@ -29,7 +29,7 @@
                     length.</small>
 
             </div>
-            <button type="submit" class="btn btn-primary">Update</button>
+            <button type="submit" class="crud-buttons">Update</button>
         </form>
     </main>
 
